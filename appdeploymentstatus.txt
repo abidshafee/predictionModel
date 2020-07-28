@@ -1,0 +1,592 @@
+Microsoft Windows [Version 10.0.19041.388]
+(c) 2020 Microsoft Corporation. All rights reserved.
+
+C:\Users\abids>cd C:\Users\abids\PycharmProjects\predictionModel
+
+C:\Users\abids\PycharmProjects\predictionModel>git clone git@github.com:abidshafee/predictionModel.git
+Cloning into 'predictionModel'...
+The authenticity of host 'github.com (192.30.255.112)' can't be established.
+RSA key fingerprint is SHA256:nThbg6kXUpJWGl7E1IGOCspRomTxdCARLviKw6E5SY8.
+Are you sure you want to continue connecting (yes/no/[fingerprint])? yes
+Warning: Permanently added 'github.com,192.30.255.112' (RSA) to the list of known hosts.
+git@github.com: Permission denied (publickey).
+fatal: Could not read from remote repository.
+
+Please make sure you have the correct access rights
+and the repository exists.
+
+C:\Users\abids\PycharmProjects\predictionModel>git clone https://github.com/abidshafee/predictionModel.git
+Cloning into 'predictionModel'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+
+C:\Users\abids\PycharmProjects\predictionModel>cd..
+
+C:\Users\abids\PycharmProjects>git clone https://github.com/abidshafee/predictionModel.git
+Cloning into 'predictionModel'...
+remote: Enumerating objects: 4, done.
+remote: Counting objects: 100% (4/4), done.
+remote: Compressing objects: 100% (3/3), done.
+remote: Total 4 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (4/4), done.
+
+C:\Users\abids\PycharmProjects>pip install streamlit
+Requirement already satisfied: streamlit in c:\python38\lib\site-packages (0.64.0)
+Requirement already satisfied: astor in c:\python38\lib\site-packages (from streamlit) (0.8.1)
+Requirement already satisfied: pyarrow in c:\python38\lib\site-packages (from streamlit) (0.17.1)
+Requirement already satisfied: tzlocal in c:\python38\lib\site-packages (from streamlit) (2.1)
+Requirement already satisfied: cachetools>=4.0 in c:\python38\lib\site-packages (from streamlit) (4.1.1)
+Requirement already satisfied: base58 in c:\python38\lib\site-packages (from streamlit) (2.0.1)
+Requirement already satisfied: validators in c:\python38\lib\site-packages (from streamlit) (0.16.0)
+Requirement already satisfied: tornado>=5.0 in c:\python38\lib\site-packages (from streamlit) (6.0.4)
+Requirement already satisfied: botocore>=1.13.44 in c:\python38\lib\site-packages (from streamlit) (1.17.27)
+Requirement already satisfied: pydeck>=0.1.dev5 in c:\python38\lib\site-packages (from streamlit) (0.4.0)
+Requirement already satisfied: pandas>=0.21.0 in c:\python38\lib\site-packages (from streamlit) (1.0.5)
+Requirement already satisfied: packaging in c:\python38\lib\site-packages (from streamlit) (20.4)
+Requirement already satisfied: click>=7.0 in c:\python38\lib\site-packages (from streamlit) (7.1.2)
+Requirement already satisfied: requests in c:\python38\lib\site-packages (from streamlit) (2.24.0)
+Requirement already satisfied: blinker in c:\python38\lib\site-packages (from streamlit) (1.4)
+Requirement already satisfied: toml in c:\python38\lib\site-packages (from streamlit) (0.10.1)
+Requirement already satisfied: boto3 in c:\python38\lib\site-packages (from streamlit) (1.14.27)
+Requirement already satisfied: altair>=3.2.0 in c:\python38\lib\site-packages (from streamlit) (4.1.0)
+Requirement already satisfied: numpy in c:\python38\lib\site-packages (from streamlit) (1.19.1)
+Requirement already satisfied: watchdog in c:\python38\lib\site-packages (from streamlit) (0.10.3)
+Requirement already satisfied: pillow>=6.2.0 in c:\python38\lib\site-packages (from streamlit) (7.2.0)
+Requirement already satisfied: python-dateutil in c:\python38\lib\site-packages (from streamlit) (2.8.1)
+Requirement already satisfied: protobuf>=3.6.0 in c:\python38\lib\site-packages (from streamlit) (3.12.2)
+Requirement already satisfied: enum-compat in c:\python38\lib\site-packages (from streamlit) (0.0.3)
+Requirement already satisfied: pytz in c:\python38\lib\site-packages (from tzlocal->streamlit) (2020.1)
+Requirement already satisfied: six>=1.4.0 in c:\users\abids\appdata\roaming\python\python38\site-packages (from validators->streamlit) (1.13.0)
+Requirement already satisfied: decorator>=3.4.0 in c:\python38\lib\site-packages (from validators->streamlit) (4.4.2)
+Requirement already satisfied: urllib3<1.26,>=1.20; python_version != "3.4" in c:\python38\lib\site-packages (from botocore>=1.13.44->streamlit) (1.25.9)
+Requirement already satisfied: jmespath<1.0.0,>=0.7.1 in c:\python38\lib\site-packages (from botocore>=1.13.44->streamlit) (0.10.0)
+Requirement already satisfied: docutils<0.16,>=0.10 in c:\python38\lib\site-packages (from botocore>=1.13.44->streamlit) (0.15.2)
+Requirement already satisfied: jinja2>=2.10.1 in c:\python38\lib\site-packages (from pydeck>=0.1.dev5->streamlit) (2.11.2)
+Requirement already satisfied: traitlets>=4.3.2 in c:\python38\lib\site-packages (from pydeck>=0.1.dev5->streamlit) (4.3.3)
+Requirement already satisfied: ipywidgets>=7.0.0 in c:\python38\lib\site-packages (from pydeck>=0.1.dev5->streamlit) (7.5.1)
+Requirement already satisfied: ipykernel>=5.1.2; python_version >= "3.4" in c:\python38\lib\site-packages (from pydeck>=0.1.dev5->streamlit) (5.3.4)
+Requirement already satisfied: pyparsing>=2.0.2 in c:\python38\lib\site-packages (from packaging->streamlit) (2.4.7)
+Requirement already satisfied: certifi>=2017.4.17 in c:\python38\lib\site-packages (from requests->streamlit) (2020.6.20)
+Requirement already satisfied: chardet<4,>=3.0.2 in c:\python38\lib\site-packages (from requests->streamlit) (3.0.4)
+Requirement already satisfied: idna<3,>=2.5 in c:\python38\lib\site-packages (from requests->streamlit) (2.10)
+Requirement already satisfied: s3transfer<0.4.0,>=0.3.0 in c:\python38\lib\site-packages (from boto3->streamlit) (0.3.3)
+Requirement already satisfied: entrypoints in c:\python38\lib\site-packages (from altair>=3.2.0->streamlit) (0.3)
+Requirement already satisfied: jsonschema in c:\python38\lib\site-packages (from altair>=3.2.0->streamlit) (3.2.0)
+Requirement already satisfied: toolz in c:\python38\lib\site-packages (from altair>=3.2.0->streamlit) (0.10.0)
+Requirement already satisfied: pathtools>=0.1.1 in c:\python38\lib\site-packages (from watchdog->streamlit) (0.1.2)
+Requirement already satisfied: setuptools in c:\python38\lib\site-packages (from protobuf>=3.6.0->streamlit) (41.2.0)
+Requirement already satisfied: MarkupSafe>=0.23 in c:\python38\lib\site-packages (from jinja2>=2.10.1->pydeck>=0.1.dev5->streamlit) (1.1.1)
+Requirement already satisfied: ipython-genutils in c:\python38\lib\site-packages (from traitlets>=4.3.2->pydeck>=0.1.dev5->streamlit) (0.2.0)
+Requirement already satisfied: ipython>=4.0.0; python_version >= "3.3" in c:\python38\lib\site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (7.16.1)
+Requirement already satisfied: nbformat>=4.2.0 in c:\python38\lib\site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (5.0.7)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in c:\python38\lib\site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (3.5.1)
+Requirement already satisfied: jupyter-client in c:\python38\lib\site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (6.1.6)
+Requirement already satisfied: attrs>=17.4.0 in c:\python38\lib\site-packages (from jsonschema->altair>=3.2.0->streamlit) (19.3.0)
+Requirement already satisfied: pyrsistent>=0.14.0 in c:\python38\lib\site-packages (from jsonschema->altair>=3.2.0->streamlit) (0.16.0)
+Requirement already satisfied: colorama; sys_platform == "win32" in c:\users\abids\appdata\roaming\python\python38\site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.4.3)
+Requirement already satisfied: backcall in c:\python38\lib\site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.2.0)
+Requirement already satisfied: jedi>=0.10 in c:\python38\lib\site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.17.2)
+Requirement already satisfied: pickleshare in c:\python38\lib\site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.7.5)
+Requirement already satisfied: pygments in c:\python38\lib\site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (2.6.1)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in c:\python38\lib\site-packages (from ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (3.0.5)
+Requirement already satisfied: jupyter-core in c:\python38\lib\site-packages (from nbformat>=4.2.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (4.6.3)
+Requirement already satisfied: notebook>=4.4.1 in c:\python38\lib\site-packages (from widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (6.0.3)
+Requirement already satisfied: pyzmq>=13 in c:\python38\lib\site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (19.0.1)
+Requirement already satisfied: parso<0.8.0,>=0.7.0 in c:\python38\lib\site-packages (from jedi>=0.10->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.7.1)
+Requirement already satisfied: wcwidth in c:\python38\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython>=4.0.0; python_version >= "3.3"->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.2.5)
+Requirement already satisfied: pywin32>=1.0; sys_platform == "win32" in c:\python38\lib\site-packages (from jupyter-core->nbformat>=4.2.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (228)
+Requirement already satisfied: Send2Trash in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (1.5.0)
+Requirement already satisfied: prometheus-client in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.8.0)
+Requirement already satisfied: terminado>=0.8.1 in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.8.3)
+Requirement already satisfied: nbconvert in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (5.6.1)
+Requirement already satisfied: pywinpty>=0.5; os_name == "nt" in c:\python38\lib\site-packages (from terminado>=0.8.1->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.5.7)
+Requirement already satisfied: mistune<2,>=0.8.1 in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.8.4)
+Requirement already satisfied: pandocfilters>=1.4.1 in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (1.4.2)
+Requirement already satisfied: defusedxml in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.6.0)
+Requirement already satisfied: testpath in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.4.4)
+Requirement already satisfied: bleach in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (3.1.5)
+Requirement already satisfied: webencodings in c:\python38\lib\site-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.5.1)
+
+C:\Users\abids\PycharmProjects>streamlit run predictionModel
+Usage: streamlit run [OPTIONS] TARGET [ARGS]...
+
+Error: Streamlit requires raw Python (.py) files, not .
+For more information, please see https://docs.streamlit.io
+
+C:\Users\abids\PycharmProjects>cd predictionModel
+
+C:\Users\abids\PycharmProjects\predictionModel>dir
+ Volume in drive C has no label.
+ Volume Serial Number is 5E75-DBFF
+
+ Directory of C:\Users\abids\PycharmProjects\predictionModel
+
+07/28/2020  11:57 AM    <DIR>          .
+07/28/2020  11:57 AM    <DIR>          ..
+07/28/2020  11:57 AM            11,558 LICENSE
+07/28/2020  02:03 AM             2,750 predictionModel.py
+07/28/2020  11:57 AM                17 README.md
+               3 File(s)         14,325 bytes
+               2 Dir(s)  147,913,371,648 bytes free
+
+C:\Users\abids\PycharmProjects\predictionModel>pip install streamlit
+Requirement already satisfied: streamlit in c:\python38\lib\site-packages (0.64.0)
+Requirement already satisfied: tzlocal in c:\python38\lib\site-packages (from streamlit) (2.1)
+Requirement already satisfied: altair>=3.2.0 in c:\python38\lib\site-packages (from streamlit) (4.1.0)
+Requirement already satisfied: validators in c:\python38\lib\site-packages (from streamlit) (0.16.0)
+Requirement already satisfied: tornado>=5.0 in c:\python38\lib\site-packages (from streamlit) (6.0.4)
+Requirement already satisfied: cachetools>=4.0 in c:\python38\lib\site-packages (from streamlit) (4.1.1)
+Requirement already satisfied: pydeck>=0.1.dev5 in c:\python38\lib\site-packages (from streamlit) (0.4.0)
+Requirement already satisfied: requests in c:\python38\lib\site-packages (from streamlit) (2.24.0)
+Requirement already satisfied: base58 in c:\python38\lib\site-packages (from streamlit) (2.0.1)
+Requirement already satisfied: protobuf>=3.6.0 in c:\python38\lib\site-packages (from streamlit) (3.12.2)
+Requirement already satisfied: click>=7.0 in c:\python38\lib\site-packages (from streamlit) (7.1.2)
+Requirement already satisfied: packaging in c:\python38\lib\site-packages (from streamlit) (20.4)
+Requirement already satisfied: pyarrow in c:\python38\lib\site-packages (from streamlit) (0.17.1)
+Requirement already satisfied: astor in c:\python38\lib\site-packages (from streamlit) (0.8.1)
+Requirement already satisfied: pillow>=6.2.0 in c:\python38\lib\site-packages (from streamlit) (7.2.0)
+Requirement already satisfied: boto3 in c:\python38\lib\site-packages (from streamlit) (1.14.27)
+Requirement already satisfied: enum-compat in c:\python38\lib\site-packages (from streamlit) (0.0.3)
+Requirement already satisfied: numpy in c:\python38\lib\site-packages (from streamlit) (1.19.1)
+Requirement already satisfied: blinker in c:\python38\lib\site-packages (from streamlit) (1.4)
+Requirement already satisfied: botocore>=1.13.44 in c:\python38\lib\site-packages (from streamlit) (1.17.27)
+Requirement already satisfied: watchdog in c:\python38\lib\site-packages (from streamlit) (0.10.3)
+Requirement already satisfied: pandas>=0.21.0 in c:\python38\lib\site-packages (from streamlit) (1.0.5)
+Requirement already satisfied: toml in c:\python38\lib\site-packages (from streamlit) (0.10.1)
+Requirement already satisfied: python-dateutil in c:\python38\lib\site-packages (from streamlit) (2.8.1)
+Requirement already satisfied: pytz in c:\python38\lib\site-packages (from tzlocal->streamlit) (2020.1)
+Requirement already satisfied: jsonschema in c:\python38\lib\site-packages (from altair>=3.2.0->streamlit) (3.2.0)
+Requirement already satisfied: toolz in c:\python38\lib\site-packages (from altair>=3.2.0->streamlit) (0.10.0)
+Requirement already satisfied: jinja2 in c:\python38\lib\site-packages (from altair>=3.2.0->streamlit) (2.11.2)
+Requirement already satisfied: entrypoints in c:\python38\lib\site-packages (from altair>=3.2.0->streamlit) (0.3)
+Requirement already satisfied: six>=1.4.0 in c:\users\abids\appdata\roaming\python\python38\site-packages (from validators->streamlit) (1.13.0)
+Requirement already satisfied: decorator>=3.4.0 in c:\python38\lib\site-packages (from validators->streamlit) (4.4.2)
+Requirement already satisfied: traitlets>=4.3.2 in c:\python38\lib\site-packages (from pydeck>=0.1.dev5->streamlit) (4.3.3)
+Requirement already satisfied: ipykernel>=5.1.2; python_version >= "3.4" in c:\python38\lib\site-packages (from pydeck>=0.1.dev5->streamlit) (5.3.4)
+Requirement already satisfied: ipywidgets>=7.0.0 in c:\python38\lib\site-packages (from pydeck>=0.1.dev5->streamlit) (7.5.1)
+Requirement already satisfied: chardet<4,>=3.0.2 in c:\python38\lib\site-packages (from requests->streamlit) (3.0.4)
+Requirement already satisfied: certifi>=2017.4.17 in c:\python38\lib\site-packages (from requests->streamlit) (2020.6.20)
+Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1 in c:\python38\lib\site-packages (from requests->streamlit) (1.25.9)
+Requirement already satisfied: idna<3,>=2.5 in c:\python38\lib\site-packages (from requests->streamlit) (2.10)
+Requirement already satisfied: setuptools in c:\python38\lib\site-packages (from protobuf>=3.6.0->streamlit) (41.2.0)
+Requirement already satisfied: pyparsing>=2.0.2 in c:\python38\lib\site-packages (from packaging->streamlit) (2.4.7)
+Requirement already satisfied: jmespath<1.0.0,>=0.7.1 in c:\python38\lib\site-packages (from boto3->streamlit) (0.10.0)
+Requirement already satisfied: s3transfer<0.4.0,>=0.3.0 in c:\python38\lib\site-packages (from boto3->streamlit) (0.3.3)
+Requirement already satisfied: docutils<0.16,>=0.10 in c:\python38\lib\site-packages (from botocore>=1.13.44->streamlit) (0.15.2)
+Requirement already satisfied: pathtools>=0.1.1 in c:\python38\lib\site-packages (from watchdog->streamlit) (0.1.2)
+Requirement already satisfied: attrs>=17.4.0 in c:\python38\lib\site-packages (from jsonschema->altair>=3.2.0->streamlit) (19.3.0)
+Requirement already satisfied: pyrsistent>=0.14.0 in c:\python38\lib\site-packages (from jsonschema->altair>=3.2.0->streamlit) (0.16.0)
+Requirement already satisfied: MarkupSafe>=0.23 in c:\python38\lib\site-packages (from jinja2->altair>=3.2.0->streamlit) (1.1.1)
+Requirement already satisfied: ipython-genutils in c:\python38\lib\site-packages (from traitlets>=4.3.2->pydeck>=0.1.dev5->streamlit) (0.2.0)
+Requirement already satisfied: ipython>=5.0.0 in c:\python38\lib\site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (7.16.1)
+Requirement already satisfied: jupyter-client in c:\python38\lib\site-packages (from ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (6.1.6)
+Requirement already satisfied: nbformat>=4.2.0 in c:\python38\lib\site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (5.0.7)
+Requirement already satisfied: widgetsnbextension~=3.5.0 in c:\python38\lib\site-packages (from ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (3.5.1)
+Requirement already satisfied: backcall in c:\python38\lib\site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (0.2.0)
+Requirement already satisfied: pickleshare in c:\python38\lib\site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (0.7.5)
+Requirement already satisfied: colorama; sys_platform == "win32" in c:\users\abids\appdata\roaming\python\python38\site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (0.4.3)
+Requirement already satisfied: jedi>=0.10 in c:\python38\lib\site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (0.17.2)
+Requirement already satisfied: prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0 in c:\python38\lib\site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (3.0.5)
+Requirement already satisfied: pygments in c:\python38\lib\site-packages (from ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (2.6.1)
+Requirement already satisfied: jupyter-core>=4.6.0 in c:\python38\lib\site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (4.6.3)
+Requirement already satisfied: pyzmq>=13 in c:\python38\lib\site-packages (from jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (19.0.1)
+Requirement already satisfied: notebook>=4.4.1 in c:\python38\lib\site-packages (from widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (6.0.3)
+Requirement already satisfied: parso<0.8.0,>=0.7.0 in c:\python38\lib\site-packages (from jedi>=0.10->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (0.7.1)
+Requirement already satisfied: wcwidth in c:\python38\lib\site-packages (from prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0->ipython>=5.0.0->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (0.2.5)
+Requirement already satisfied: pywin32>=1.0; sys_platform == "win32" in c:\python38\lib\site-packages (from jupyter-core>=4.6.0->jupyter-client->ipykernel>=5.1.2; python_version >= "3.4"->pydeck>=0.1.dev5->streamlit) (228)
+Requirement already satisfied: terminado>=0.8.1 in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.8.3)
+Requirement already satisfied: prometheus-client in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.8.0)
+Requirement already satisfied: Send2Trash in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (1.5.0)
+Requirement already satisfied: nbconvert in c:\python38\lib\site-packages (from notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (5.6.1)
+Requirement already satisfied: pywinpty>=0.5; os_name == "nt" in c:\python38\lib\site-packages (from terminado>=0.8.1->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.5.7)
+Requirement already satisfied: mistune<2,>=0.8.1 in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.8.4)
+Requirement already satisfied: testpath in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.4.4)
+Requirement already satisfied: pandocfilters>=1.4.1 in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (1.4.2)
+Requirement already satisfied: defusedxml in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.6.0)
+Requirement already satisfied: bleach in c:\python38\lib\site-packages (from nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (3.1.5)
+Requirement already satisfied: webencodings in c:\python38\lib\site-packages (from bleach->nbconvert->notebook>=4.4.1->widgetsnbextension~=3.5.0->ipywidgets>=7.0.0->pydeck>=0.1.dev5->streamlit) (0.5.1)
+
+C:\Users\abids\PycharmProjects\predictionModel>streamlit run predictionModel.py
+C:\Users\abids\PycharmProjects\predictionModel\predictionModel.py:74: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if int(prediction) is 1:
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.0.102:8501
+
+  Stopping...
+
+C:\Users\abids\PycharmProjects\predictionModel>pip install sklearn
+Processing c:\users\abids\appdata\local\pip\cache\wheels\76\03\bb\589d421d27431bcd2c6da284d5f2286c8e3b2ea3cf1594c074\sklearn-0.0-py2.py3-none-any.whl
+Collecting scikit-learn
+  Downloading scikit_learn-0.23.1-cp38-cp38-win_amd64.whl (6.8 MB)
+     |████████████████████████████████| 6.8 MB 97 kB/s
+Collecting threadpoolctl>=2.0.0
+  Using cached threadpoolctl-2.1.0-py3-none-any.whl (12 kB)
+Collecting joblib>=0.11
+  Using cached joblib-0.16.0-py3-none-any.whl (300 kB)
+Requirement already satisfied: numpy>=1.13.3 in c:\python38\lib\site-packages (from scikit-learn->sklearn) (1.19.1)
+Collecting scipy>=0.19.1
+  Downloading scipy-1.5.2-cp38-cp38-win_amd64.whl (31.4 MB)
+     |████████████████████████████████| 31.4 MB 14 kB/s
+Installing collected packages: threadpoolctl, joblib, scipy, scikit-learn, sklearn
+Successfully installed joblib-0.16.0 scikit-learn-0.23.1 scipy-1.5.2 sklearn-0.0 threadpoolctl-2.1.0
+
+C:\Users\abids\PycharmProjects\predictionModel>streamlit run predictionModel.py
+C:\Users\abids\PycharmProjects\predictionModel\predictionModel.py:74: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if int(prediction) is 1:
+
+  You can now view your Streamlit app in your browser.
+
+  Local URL: http://localhost:8501
+  Network URL: http://192.168.0.102:8501
+
+C:\Users\abids\PycharmProjects\predictionModel\predictionModel.py:74: SyntaxWarning: "is" with a literal. Did you mean "=="?
+  if int(prediction) is 1:
+Logging in... done
+Logged in as abidshafee@gmail.com
+
+C:\Users\abids\PycharmProjects\predictionModel>heroku login
+C:\Users\abids\PycharmProjects\predictionModel> login or q to exit:
+C:\Users\abids\PycharmProjects\predictionModel>auth/cli/browser/024ae65e-4dfe-486b-b344-0296d2ae76d3
+C:\Users\abids\PycharmProjects\predictionModel>
+C:\Users\abids\PycharmProjects\predictionModel>
+C:\Users\abids\PycharmProjects\predictionModel>heroku create predictionModel
+Creating ⬢ predictionModel... -
+(node:1428) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ predictionModel... !
+ !    Name must start with a letter, end with a letter or digit and can only contain lowercase letters, digits, and
+ !    dashes.
+
+C:\Users\abids\PycharmProjects\predictionModel>heroku create predictionmodel
+Creating ⬢ predictionmodel... -
+(node:11424) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ predictionmodel... !
+ !    Name predictionmodel is already taken
+
+C:\Users\abids\PycharmProjects\predictionModel>mlmodel
+'mlmodel' is not recognized as an internal or external command,
+operable program or batch file.
+
+C:\Users\abids\PycharmProjects\predictionModel>heroku create ml_model
+Creating ⬢ ml_model... -
+(node:6604) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ ml_model... !
+ !    Name must start with a letter, end with a letter or digit and can only contain lowercase letters, digits, and
+ !    dashes.
+
+Creating ⬢ prediction-model... -
+(node:11128) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ prediction-model... !
+ !    Name prediction-model is already taken
+
+C:\Users\abids\PycharmProjects\predictionModel>heroku create ml-model
+Creating ⬢ ml-model... -
+(node:9324) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ ml-model... !
+ !    Name ml-model is already taken
+
+C:\Users\abids\PycharmProjects\predictionModel>heroku create data-model
+Creating ⬢ data-model... -
+(node:11104) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ data-model... !
+ !    Name data-model is already taken
+
+C:\Users\abids\PycharmProjects\predictionModel>heroku create predictions
+Creating ⬢ predictions... -
+(node:14220) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ predictions... !
+ !    Name predictions is already taken
+
+C:\Users\abids\PycharmProjects\predictionModel>heroku create predictiveml
+Creating ⬢ predictiveml... -
+(node:4992) SyntaxError Plugin: heroku: C:\Users\abids\AppData\Local\heroku\config.json: Unexpected string in JSON at position 72
+module: @oclif/config@1.13.2
+task: runHook prerun
+plugin: heroku
+root: C:\Program Files\heroku\client
+Creating ⬢ predictiveml... done
+https://predictiveml.herokuapp.com/ | https://git.heroku.com/predictiveml.git
+
+C:\Users\abids\PycharmProjects\predictionModel>git add .
+
+C:\Users\abids\PycharmProjects\predictionModel>git commit -m "predictionModel"
+[master 1bc5c5e] predictionModel
+ 5 files changed, 864 insertions(+)
+ create mode 100644 Procfile
+ create mode 100644 diabetes.csv
+ create mode 100644 predictionModel.py
+ create mode 100644 requirements.txt
+ create mode 100644 setup.sh
+
+C:\Users\abids\PycharmProjects\predictionModel>git push heroku master
+Enumerating objects: 11, done.
+Counting objects: 100% (11/11), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (9/9), done.
+Writing objects: 100% (11/11), 14.79 KiB | 2.96 MiB/s, done.
+Total 11 (delta 0), reused 0 (delta 0)
+remote: Compressing source files... done.
+remote: Building source:
+remote:
+remote: -----> Python app detected
+remote: -----> Installing python-3.6.11
+remote: -----> Installing pip
+remote: -----> Installing SQLite3
+remote: -----> Installing requirements with pip
+remote:        Collecting streamlit
+remote:          Downloading streamlit-0.64.0-py2.py3-none-any.whl (7.1 MB)
+remote:        Collecting sklearn
+remote:          Downloading sklearn-0.0.tar.gz (1.1 kB)
+remote:        Collecting pandas
+remote:          Downloading pandas-1.0.5-cp36-cp36m-manylinux1_x86_64.whl (10.1 MB)
+remote:        Collecting astor
+remote:          Downloading astor-0.8.1-py2.py3-none-any.whl (27 kB)
+remote:        Collecting boto3
+remote:          Downloading boto3-1.14.29-py2.py3-none-any.whl (128 kB)
+remote:        Collecting pydeck>=0.1.dev5
+remote:          Downloading pydeck-0.4.0-py2.py3-none-any.whl (4.4 MB)
+remote:        Collecting enum-compat
+remote:          Downloading enum_compat-0.0.3-py3-none-any.whl (1.3 kB)
+remote:        Collecting packaging
+remote:          Downloading packaging-20.4-py2.py3-none-any.whl (37 kB)
+remote:        Collecting tornado>=5.0
+remote:          Downloading tornado-6.0.4.tar.gz (496 kB)
+remote:        Collecting toml
+remote:          Downloading toml-0.10.1-py2.py3-none-any.whl (19 kB)
+remote:        Collecting watchdog
+remote:          Downloading watchdog-0.10.3.tar.gz (94 kB)
+remote:        Collecting requests
+remote:          Downloading requests-2.24.0-py2.py3-none-any.whl (61 kB)
+remote:        Collecting python-dateutil
+remote:          Downloading python_dateutil-2.8.1-py2.py3-none-any.whl (227 kB)
+remote:        Collecting altair>=3.2.0
+remote:          Downloading altair-4.1.0-py3-none-any.whl (727 kB)
+remote:        Collecting validators
+remote:          Downloading validators-0.16.0.tar.gz (28 kB)
+remote:        Collecting click>=7.0
+remote:          Downloading click-7.1.2-py2.py3-none-any.whl (82 kB)
+remote:        Collecting base58
+remote:          Downloading base58-2.0.1-py3-none-any.whl (4.3 kB)
+remote:        Collecting pyarrow
+remote:          Downloading pyarrow-1.0.0-cp36-cp36m-manylinux2014_x86_64.whl (17.2 MB)
+remote:        Collecting numpy
+remote:          Downloading numpy-1.19.1-cp36-cp36m-manylinux2010_x86_64.whl (14.5 MB)
+remote:        Collecting blinker
+remote:          Downloading blinker-1.4.tar.gz (111 kB)
+remote:        Collecting cachetools>=4.0
+remote:          Downloading cachetools-4.1.1-py3-none-any.whl (10 kB)
+remote:        Collecting protobuf>=3.6.0
+remote:          Downloading protobuf-3.12.2-cp36-cp36m-manylinux1_x86_64.whl (1.3 MB)
+remote:        Collecting tzlocal
+remote:          Downloading tzlocal-2.1-py2.py3-none-any.whl (16 kB)
+remote:        Collecting pillow>=6.2.0
+remote:          Downloading Pillow-7.2.0-cp36-cp36m-manylinux1_x86_64.whl (2.2 MB)
+remote:        Collecting botocore>=1.13.44
+remote:          Downloading botocore-1.17.29-py2.py3-none-any.whl (6.4 MB)
+remote:        Collecting scikit-learn
+remote:          Downloading scikit_learn-0.23.1-cp36-cp36m-manylinux1_x86_64.whl (6.8 MB)
+remote:        Collecting pytz>=2017.2
+remote:          Downloading pytz-2020.1-py2.py3-none-any.whl (510 kB)
+remote:        Collecting s3transfer<0.4.0,>=0.3.0
+remote:          Downloading s3transfer-0.3.3-py2.py3-none-any.whl (69 kB)
+remote:        Collecting jmespath<1.0.0,>=0.7.1
+remote:          Downloading jmespath-0.10.0-py2.py3-none-any.whl (24 kB)
+remote:        Collecting jinja2>=2.10.1
+remote:          Downloading Jinja2-2.11.2-py2.py3-none-any.whl (125 kB)
+remote:        Collecting ipywidgets>=7.0.0
+remote:          Downloading ipywidgets-7.5.1-py2.py3-none-any.whl (121 kB)
+remote:        Collecting ipykernel>=5.1.2; python_version >= "3.4"
+remote:          Downloading ipykernel-5.3.4-py3-none-any.whl (120 kB)
+remote:        Collecting traitlets>=4.3.2
+remote:          Downloading traitlets-4.3.3-py2.py3-none-any.whl (75 kB)
+remote:        Collecting pyparsing>=2.0.2
+remote:          Downloading pyparsing-2.4.7-py2.py3-none-any.whl (67 kB)
+remote:        Collecting six
+remote:          Downloading six-1.15.0-py2.py3-none-any.whl (10 kB)
+remote:        Collecting pathtools>=0.1.1
+remote:          Downloading pathtools-0.1.2.tar.gz (11 kB)
+remote:        Collecting idna<3,>=2.5
+remote:          Downloading idna-2.10-py2.py3-none-any.whl (58 kB)
+remote:        Collecting chardet<4,>=3.0.2
+remote:          Downloading chardet-3.0.4-py2.py3-none-any.whl (133 kB)
+remote:        Collecting urllib3!=1.25.0,!=1.25.1,<1.26,>=1.21.1
+remote:          Downloading urllib3-1.25.10-py2.py3-none-any.whl (127 kB)
+remote:        Collecting certifi>=2017.4.17
+remote:          Downloading certifi-2020.6.20-py2.py3-none-any.whl (156 kB)
+remote:        Collecting entrypoints
+remote:          Downloading entrypoints-0.3-py2.py3-none-any.whl (11 kB)
+remote:        Collecting toolz
+remote:          Downloading toolz-0.10.0.tar.gz (49 kB)
+remote:        Collecting jsonschema
+remote:          Downloading jsonschema-3.2.0-py2.py3-none-any.whl (56 kB)
+remote:        Collecting decorator>=3.4.0
+remote:          Downloading decorator-4.4.2-py2.py3-none-any.whl (9.2 kB)
+remote:        Collecting docutils<0.16,>=0.10
+remote:          Downloading docutils-0.15.2-py3-none-any.whl (547 kB)
+remote:        Collecting joblib>=0.11
+remote:          Downloading joblib-0.16.0-py3-none-any.whl (300 kB)
+remote:        Collecting scipy>=0.19.1
+remote:          Downloading scipy-1.5.2-cp36-cp36m-manylinux1_x86_64.whl (25.9 MB)
+remote:        Collecting threadpoolctl>=2.0.0
+remote:          Downloading threadpoolctl-2.1.0-py3-none-any.whl (12 kB)
+remote:        Collecting MarkupSafe>=0.23
+remote:          Downloading MarkupSafe-1.1.1-cp36-cp36m-manylinux1_x86_64.whl (27 kB)
+remote:        Collecting ipython>=4.0.0; python_version >= "3.3"
+remote:          Downloading ipython-7.16.1-py3-none-any.whl (785 kB)
+remote:        Collecting widgetsnbextension~=3.5.0
+remote:          Downloading widgetsnbextension-3.5.1-py2.py3-none-any.whl (2.2 MB)
+remote:        Collecting nbformat>=4.2.0
+remote:          Downloading nbformat-5.0.7-py3-none-any.whl (170 kB)
+remote:        Collecting jupyter-client
+remote:          Downloading jupyter_client-6.1.6-py3-none-any.whl (108 kB)
+remote:        Collecting ipython-genutils
+remote:          Downloading ipython_genutils-0.2.0-py2.py3-none-any.whl (26 kB)
+remote:        Collecting attrs>=17.4.0
+remote:          Downloading attrs-19.3.0-py2.py3-none-any.whl (39 kB)
+remote:        Collecting importlib-metadata; python_version < "3.8"
+remote:          Downloading importlib_metadata-1.7.0-py2.py3-none-any.whl (31 kB)
+remote:        Collecting pyrsistent>=0.14.0
+remote:          Downloading pyrsistent-0.16.0.tar.gz (108 kB)
+remote:        Collecting pygments
+remote:          Downloading Pygments-2.6.1-py3-none-any.whl (914 kB)
+remote:        Collecting prompt-toolkit!=3.0.0,!=3.0.1,<3.1.0,>=2.0.0
+remote:          Downloading prompt_toolkit-3.0.5-py3-none-any.whl (351 kB)
+remote:        Collecting pickleshare
+remote:          Downloading pickleshare-0.7.5-py2.py3-none-any.whl (6.9 kB)
+remote:        Collecting jedi>=0.10
+remote:          Downloading jedi-0.17.2-py2.py3-none-any.whl (1.4 MB)
+remote:        Collecting backcall
+remote:          Downloading backcall-0.2.0-py2.py3-none-any.whl (11 kB)
+remote:        Collecting pexpect; sys_platform != "win32"
+remote:          Downloading pexpect-4.8.0-py2.py3-none-any.whl (59 kB)
+remote:        Collecting notebook>=4.4.1
+remote:          Downloading notebook-6.0.3-py3-none-any.whl (9.7 MB)
+remote:        Collecting jupyter-core
+remote:          Downloading jupyter_core-4.6.3-py2.py3-none-any.whl (83 kB)
+remote:        Collecting pyzmq>=13
+remote:          Downloading pyzmq-19.0.1-cp36-cp36m-manylinux1_x86_64.whl (1.1 MB)
+remote:        Collecting zipp>=0.5
+remote:          Downloading zipp-3.1.0-py3-none-any.whl (4.9 kB)
+remote:        Collecting wcwidth
+remote:          Downloading wcwidth-0.2.5-py2.py3-none-any.whl (30 kB)
+remote:        Collecting parso<0.8.0,>=0.7.0
+remote:          Downloading parso-0.7.1-py2.py3-none-any.whl (109 kB)
+remote:        Collecting ptyprocess>=0.5
+remote:          Downloading ptyprocess-0.6.0-py2.py3-none-any.whl (39 kB)
+remote:        Collecting nbconvert
+remote:          Downloading nbconvert-5.6.1-py2.py3-none-any.whl (455 kB)
+remote:        Collecting terminado>=0.8.1
+remote:          Downloading terminado-0.8.3-py2.py3-none-any.whl (33 kB)
+remote:        Collecting Send2Trash
+remote:          Downloading Send2Trash-1.5.0-py3-none-any.whl (12 kB)
+remote:        Collecting prometheus-client
+remote:          Downloading prometheus_client-0.8.0-py2.py3-none-any.whl (53 kB)
+remote:        Collecting mistune<2,>=0.8.1
+remote:          Downloading mistune-0.8.4-py2.py3-none-any.whl (16 kB)
+remote:        Collecting pandocfilters>=1.4.1
+remote:          Downloading pandocfilters-1.4.2.tar.gz (14 kB)
+remote:        Collecting bleach
+remote:          Downloading bleach-3.1.5-py2.py3-none-any.whl (151 kB)
+remote:        Collecting defusedxml
+remote:          Downloading defusedxml-0.6.0-py2.py3-none-any.whl (23 kB)
+remote:        Collecting testpath
+remote:          Downloading testpath-0.4.4-py2.py3-none-any.whl (163 kB)
+remote:        Collecting webencodings
+remote:          Downloading webencodings-0.5.1-py2.py3-none-any.whl (11 kB)
+remote:        Building wheels for collected packages: sklearn, tornado, watchdog, validators, blinker, pathtools, toolz, pyrsistent, pandocfilters
+remote:          Building wheel for sklearn (setup.py): started
+remote:          Building wheel for sklearn (setup.py): finished with status 'done'
+remote:          Created wheel for sklearn: filename=sklearn-0.0-py2.py3-none-any.whl size=1315 sha256=5ea9eaefb8afca2c803094d1c78da30ee96e1795cf95640fa57ac0e55d4b42df
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/23/9d/42/5ec745cbbb17517000a53cecc49d6a865450d1f5cb16dc8a9c
+remote:          Building wheel for tornado (setup.py): started
+remote:          Building wheel for tornado (setup.py): finished with status 'done'
+remote:          Created wheel for tornado: filename=tornado-6.0.4-cp36-cp36m-linux_x86_64.whl size=427625 sha256=019b69185f659f26d8d882ec13a759c65dfb946d7d26212ce571ac2bb5b6df67
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/37/a7/db/2d592e44029ef817f3ef63ea991db34191cebaef087a96f505
+remote:          Building wheel for watchdog (setup.py): started
+remote:          Building wheel for watchdog (setup.py): finished with status 'done'
+remote:          Created wheel for watchdog: filename=watchdog-0.10.3-py3-none-any.whl size=73871 sha256=951760dee7d2674b54658cc26d84f72224d27d0054eb9889b22f7ce6e6b5ebb7
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/a1/d5/fc/fddf5870c0fb0b755abdf41f4889ef54742ee21fff693aae22
+remote:          Building wheel for validators (setup.py): started
+remote:          Building wheel for validators (setup.py): finished with status 'done'
+remote:          Created wheel for validators: filename=validators-0.16.0-py3-none-any.whl size=18411 sha256=782c13aad0e29d619aa057bba937ce033d4422c9f2f5c2f6d6a69bda91063bcf
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/0b/f6/dd/02608de9b052393f11146e6d5e176aebfab927ae9462c28d69
+remote:          Building wheel for blinker (setup.py): started
+remote:          Building wheel for blinker (setup.py): finished with status 'done'
+remote:          Created wheel for blinker: filename=blinker-1.4-py3-none-any.whl size=13452 sha256=f780f943675513edf1b1ffd2af820548cdc29bd9ef1f953038ea6cb040da8bac
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/4f/4a/93/c5ed8c11fedbe97fb8b8032b301eaa736248684b44087a7259
+remote:          Building wheel for pathtools (setup.py): started
+remote:          Building wheel for pathtools (setup.py): finished with status 'done'
+remote:          Created wheel for pathtools: filename=pathtools-0.1.2-py3-none-any.whl size=8784 sha256=ae0e8f7bebe2e787b17ac1dd01b363f2f2dfbcf5e05b24d71491b4d88a9f9a3d
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/42/ea/90/e37d463fb3b03848bf715080595de62545266f53dd546b2497
+remote:          Building wheel for toolz (setup.py): started
+remote:          Building wheel for toolz (setup.py): finished with status 'done'
+remote:          Created wheel for toolz: filename=toolz-0.10.0-py3-none-any.whl size=55575 sha256=f9dc0794774296f22548e2b4425c1687dfa802b3ef450b644ee8a424efe1b4ca
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/fc/da/2e/27e381e9cfc922d078a0a750c7ec72e76df66100e81722516d
+remote:          Building wheel for pyrsistent (setup.py): started
+remote:          Building wheel for pyrsistent (setup.py): finished with status 'done'
+remote:          Created wheel for pyrsistent: filename=pyrsistent-0.16.0-cp36-cp36m-linux_x86_64.whl size=115054 sha256=877d7fe5669783ea60108913927a788790b2f8a9a54f1d84a9580df62b6776dc
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/d1/8a/1c/32ab9017418a2c64e4fbaf503c08648bed2f8eb311b869a464
+remote:          Building wheel for pandocfilters (setup.py): started
+remote:          Building wheel for pandocfilters (setup.py): finished with status 'done'
+remote:          Created wheel for pandocfilters: filename=pandocfilters-1.4.2-py3-none-any.whl size=7856 sha256=62574d391799870c7a085ff5287f5889230507bd7428538ec14f5bf4bb263776
+remote:          Stored in directory: /tmp/pip-ephem-wheel-cache-t0v_lykb/wheels/46/c4/40/718c6fd14c2129ccaee10e0cf03ef6c4d01d98cad5dbbfda38
+remote:        Successfully built sklearn tornado watchdog validators blinker pathtools toolz pyrsistent pandocfilters
+remote:        Installing collected packages: astor, six, python-dateutil, jmespath, docutils, urllib3, botocore, s3transfer, boto3, numpy, MarkupSafe, jinja2, pygments, wcwidth, prompt-toolkit, decorator, ipython-genutils, traitlets, pickleshare, parso, jedi, backcall, ptyprocess, pexpect, ipython, tornado, pyzmq, jupyter-core, jupyter-client, ipykernel, entrypoints, mistune, pandocfilters, webencodings, pyparsing, packaging, bleach, attrs, zipp, importlib-metadata, pyrsistent, jsonschema, nbformat, defusedxml, testpath, nbconvert, terminado, Send2Trash, prometheus-client, notebook, widgetsnbextension, ipywidgets, pydeck, enum-compat, toml, pathtools, watchdog, idna, chardet, certifi, requests, pytz, pandas, toolz, altair, validators, click, base58, pyarrow, blinker, cachetools, protobuf, tzlocal, pillow, streamlit, joblib, scipy, threadpoolctl, scikit-learn, sklearn
+remote:        Successfully installed MarkupSafe-1.1.1 Send2Trash-1.5.0 altair-4.1.0 astor-0.8.1 attrs-19.3.0 backcall-0.2.0 base58-2.0.1 bleach-3.1.5 blinker-1.4 boto3-1.14.29 botocore-1.17.29 cachetools-4.1.1 certifi-2020.6.20 chardet-3.0.4 click-7.1.2 decorator-4.4.2 defusedxml-0.6.0 docutils-0.15.2 entrypoints-0.3 enum-compat-0.0.3 idna-2.10 importlib-metadata-1.7.0 ipykernel-5.3.4 ipython-7.16.1 ipython-genutils-0.2.0 ipywidgets-7.5.1 jedi-0.17.2 jinja2-2.11.2 jmespath-0.10.0 joblib-0.16.0 jsonschema-3.2.0 jupyter-client-6.1.6 jupyter-core-4.6.3 mistune-0.8.4 nbconvert-5.6.1 nbformat-5.0.7 notebook-6.0.3 numpy-1.19.1 packaging-20.4 pandas-1.0.5 pandocfilters-1.4.2 parso-0.7.1 pathtools-0.1.2 pexpect-4.8.0 pickleshare-0.7.5 pillow-7.2.0 prometheus-client-0.8.0 prompt-toolkit-3.0.5 protobuf-3.12.2 ptyprocess-0.6.0 pyarrow-1.0.0 pydeck-0.4.0 pygments-2.6.1 pyparsing-2.4.7 pyrsistent-0.16.0 python-dateutil-2.8.1 pytz-2020.1 pyzmq-19.0.1 requests-2.24.0 s3transfer-0.3.3 scikit-learn-0.23.1 scipy-1.5.2 six-1.15.0 sklearn-0.0 streamlit-0.64.0 terminado-0.8.3 testpath-0.4.4 threadpoolctl-2.1.0 toml-0.10.1 toolz-0.10.0 tornado-6.0.4 traitlets-4.3.3 tzlocal-2.1 urllib3-1.25.10 validators-0.16.0 watchdog-0.10.3 wcwidth-0.2.5 webencodings-0.5.1 widgetsnbextension-3.5.1 zipp-3.1.0
+remote: -----> Discovering process types
+remote:        Procfile declares types -> web
+remote:
+remote: -----> Compressing...
+remote:        Done: 172.7M
+remote: -----> Launching...
+remote:        Released v3
+remote:        https://predictiveml.herokuapp.com/ deployed to Heroku
+remote:
+remote: Verifying deploy... done.
+To https://git.heroku.com/predictiveml.git
+ * [new branch]      master -> master
+
+C:\Users\abids\PycharmProjects\predictionModel>git push
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (6/6), done.
+Writing objects: 100% (7/7), 10.32 KiB | 2.58 MiB/s, done.
+Total 7 (delta 0), reused 0 (delta 0)
+To https://github.com/abidshafee/predictionModel.git
+   10f297c..1bc5c5e  master -> master
+
+C:\Users\abids\PycharmProjects\predictionModel>
