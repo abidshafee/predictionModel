@@ -83,7 +83,7 @@ st.write(prediction)
 # hide menu and footer
 hide_streamlit_style = """
             <style>
-            #MainMenu {visibility: hidden;}
+            MainMenu {visibility: hidden;}
             footer {visibility: hidden;}
             </style>
             """
