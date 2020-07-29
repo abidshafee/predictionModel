@@ -59,6 +59,7 @@ user_input = get_user_input()
 st.subheader('User Input: ')
 st.write(user_input)
 
+# ML Model
 Prediction_Model = RandomForestClassifier()
 Prediction_Model.fit(X_train, Y_train)
 
@@ -68,10 +69,9 @@ st.write(accuracy)
 
 # now predicting user input and Displaying it
 prediction = Prediction_Model.predict(user_input)
-
 st.subheader('Prediction')
 st.text('Based on User Input')
-if int(prediction) is 1:
+if int(prediction) == 1:
     pred = f'There is {accuracy} chance that you have Diabetes!'
     st.write(pred)
 else:
@@ -79,3 +79,12 @@ else:
     st.write(pred)
 st.subheader('Classification: ')
 st.write(prediction)
+
+# hide menu and footer
+hide_streamlit_style = """
+            <style>
+            #MainMenu {visibility: hidden;}
+            footer {visibility: hidden;}
+            </style>
+            """
+st.markdown(hide_streamlit_style, unsafe_allow_html=True)
