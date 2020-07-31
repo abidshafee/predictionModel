@@ -31,7 +31,9 @@ X = df.iloc[:, 0:8].values  # all rows of 0 to 8-1 = 7 columns
 Y = df.iloc[:, -1].values  # all rows of very last column
 
 # Splitting datasets
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.7, random_state=20)
+# st.sidebar.text('Random State')
+random_state = st.sidebar.slider('Random State: ', 7, 30)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.7, random_state=random_state)
 
 
 def model_param(cls_name):
