@@ -10,7 +10,7 @@ df = pd.read_csv('diabetes.csv')
 # print(df.info())
 st.header('Prediction Model ML-WebApp')
 st.subheader('This Machine Learning WebApp can predict Diabetes based on input values')
-st.text('Data Table: Based on we built this model ')
+st.text('Dataset: ')
 
 
 classification = st.sidebar.selectbox("Select Classifier: ", ("Random Forest", "SVM", "KNN"))
@@ -45,18 +45,19 @@ def model_param(cls_name):
         c = st.sidebar.slider('C: ', 0.1, 10.0)
         param['c'] = c
     else:
-        max_depth = st.sidebar.slider('Number of depth: ', 2, 15)
-        n_estimators = st.sidebar.slider('Number of Estimator: ', 1, 100)
-        param['Number of depth'] = max_depth
-        param['Number of Estimator'] = n_estimators
+        max_depth = st.sidebar.slider('max_depth: ', 2, 15)
+        n_estimators = st.sidebar.slider('n_estimator: ', 1, 100)
+        param['max_depth'] = max_depth
+        param['n_estimators'] = n_estimators
     return param
 
 
-model_param(classification)
+params = model_param(classification)
 
 
 # get user input for future prediction
 def get_user_input():
+    st.sidebar.subheader('Input Parameters: ')
     pregnancies = st.sidebar.slider('Pregnancies', 0, 17, 3)
     glucose = st.sidebar.slider('Glucose', 0, 199, 117)
     blood_pressure = st.sidebar.slider('Blood Pressure', 0, 122, 72)
@@ -93,7 +94,7 @@ st.write(user_input)
 
 
 # ML Model
-Prediction_Model = RandomForestClassifier()
+Prediction_Model = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
 Prediction_Model.fit(X_train, Y_train)
 
 # Prediction
