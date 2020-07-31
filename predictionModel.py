@@ -37,13 +37,16 @@ X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.7, random_
 def model_param(cls_name):
     param = dict()
     if cls_name == 'KNN':
-        k = st.sidebar.slider('K', 1, 15)
+        k = st.sidebar.slider('K: ', 1, 15)
         param['k'] = k
     elif cls_name == 'SVM':
-        c = st.sidebar.slider('C', 0.1, 10.0)
+        c = st.sidebar.slider('C: ', 0.1, 10.0)
         param['c'] = c
     else:
-        pass
+        max_depth = st.sidebar.slider('Number of depth: ', 2, 15)
+        n_estimators = st.sidebar.slider('Number of Estimator: ', 1, 100)
+        param['Number of depth'] = max_depth
+        param['Number of Estimator'] = n_estimators
     return param
 
 
