@@ -47,7 +47,7 @@ def model_param(cls_name):
         k = st.sidebar.slider('K: ', 1, 15)
         param['K'] = k
     elif cls_name == 'SVM':
-        c = st.sidebar.slider('C: ', 0.1, 10.0)
+        c = st.sidebar.slider('C: ', 0.1, 10.0, 2.45)
         param['C'] = c
     else:
         max_depth = st.sidebar.slider('max_depth: ', 2, 15, 4)
