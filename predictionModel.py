@@ -1,6 +1,8 @@
 import pandas as pd
 import streamlit as st
 from sklearn.ensemble import RandomForestClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 
@@ -30,23 +32,26 @@ X = df.iloc[:, 0:8].values  # all rows of 0 to 8-1 = 7 columns
 # dependent dataset
 Y = df.iloc[:, -1].values  # all rows of very last column
 
-# Splitting datasets
+# Splitting Dataset
 # st.sidebar.text('Random State')
-random_state = st.sidebar.slider('Random State: ', 7, 30)
+random_state = st.sidebar.slider('Random State: ', 3, 30, 8)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.7, random_state=random_state)
 
+st.sidebar.subheader('Classifier Parameters')
 
+
+# parameter function
 def model_param(cls_name):
     param = dict()
     if cls_name == 'KNN':
         k = st.sidebar.slider('K: ', 1, 15)
-        param['k'] = k
+        param['K'] = k
     elif cls_name == 'SVM':
         c = st.sidebar.slider('C: ', 0.1, 10.0)
-        param['c'] = c
+        param['C'] = c
     else:
-        max_depth = st.sidebar.slider('max_depth: ', 2, 15)
-        n_estimators = st.sidebar.slider('n_estimator: ', 1, 100)
+        max_depth = st.sidebar.slider('max_depth: ', 2, 15, 4)
+        n_estimators = st.sidebar.slider('n_estimator: ', 1, 100, 29)
         param['max_depth'] = max_depth
         param['n_estimators'] = n_estimators
     return param
@@ -88,23 +93,40 @@ def get_user_input():
 user_input = get_user_input()
 
 
-# displaying userinput in webapp
+# displaying user_input in webapp
 st.subheader('User Input: ')
 st.write(user_input)
 
 
 # ML Model
-Prediction_Model = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
-Prediction_Model.fit(X_train, Y_train)
+# get classifier function
+def get_classifier(clf_name, params):
+    if clf_name == 'KNN':
+        clf = KNeighborsClassifier(n_estimators=params['K'])
+    elif clf_name == 'SVM':
+        clf = SVC(C=params['C'])
+    else:
+        clf = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
+    return clf
+
+
+clf = get_classifier(classification, params)
+
+
+# ML Model
+# Prediction_Model = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
+
+# Training Model
+clf.fit(X_train, Y_train)
 
 # Prediction
-prediction = Prediction_Model.predict(X_test)
+prediction = clf.predict(X_test)
 st.subheader('Test Accuracy: ')
 accuracy = str(accuracy_score(Y_test, prediction)*100)+'%'
 st.write(accuracy)
 
 # now predicting user input and Displaying it
-prediction = Prediction_Model.predict(user_input)
+prediction = clf.predict(user_input)
 st.subheader('Prediction: ')
 st.text('Based on User Input')
 if int(prediction) == 1:
