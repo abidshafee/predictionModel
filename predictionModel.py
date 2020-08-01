@@ -5,6 +5,8 @@ from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+
 
 df = pd.read_csv('diabetes.csv')
 # print(df['Outcome'].values)
