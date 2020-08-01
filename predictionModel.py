@@ -34,7 +34,7 @@ Y = df.iloc[:, -1].values  # all rows of very last column
 
 # Splitting Dataset
 # st.sidebar.text('Random State')
-random_state = st.sidebar.slider('Random State: ', 3, 30, 8)
+random_state = st.sidebar.slider('Random State: ', 3, 30, 9)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.7, random_state=random_state)
 
 st.sidebar.subheader('Classifier Parameters')
@@ -47,7 +47,7 @@ def model_param(cls_name):
         k = st.sidebar.slider('K: ', 1, 15)
         param['K'] = k
     elif cls_name == 'SVM':
-        c = st.sidebar.slider('C: ', 0.1, 10.0, 2.45)
+        c = st.sidebar.slider('C: ', 0.1, 10.0, 1.66)
         param['C'] = c
     else:
         max_depth = st.sidebar.slider('max_depth: ', 2, 15, 4)
@@ -123,7 +123,7 @@ clf.fit(X_train, Y_train)
 prediction = clf.predict(X_test)
 st.subheader('Test Accuracy: ')
 accuracy = str(accuracy_score(Y_test, prediction)*100)+'%'
-st.write(accuracy)
+st.write(f"{classification}: " + accuracy)
 
 # now predicting user input and Displaying it
 prediction = clf.predict(user_input)
