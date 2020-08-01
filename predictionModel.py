@@ -139,6 +139,7 @@ else:
     st.write(pred)
 st.subheader('Classification: ')
 st.write(prediction)
+st.sidebar.subheader('Developed by \nShafekul Abid')
 
 # hide menu and footer
 hide_streamlit_style = """
