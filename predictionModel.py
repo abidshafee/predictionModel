@@ -36,6 +36,7 @@ Y = df.iloc[:, -1].values  # all rows of very last column
 
 # Splitting Dataset
 # st.sidebar.text('Random State')
+st.sidebar.subheader('Cross Validation')
 random_state = st.sidebar.slider('Random State: ', 3, 30, 9)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.7, random_state=random_state)
 
@@ -124,18 +125,19 @@ clf.fit(X_train, Y_train)
 # Prediction
 prediction = clf.predict(X_test)
 st.subheader('Test Accuracy: ')
-accuracy = str(accuracy_score(Y_test, prediction)*100)+'%'
-st.write(f"{classification}: " + accuracy)
+accuracy = accuracy_score(Y_test, prediction)*100
+accuracy_2f = str(round(accuracy, 2))+'%'
+st.write(f"{classification}: " + accuracy_2f + ' (Tune random_state for better accuracy)')
 
 # now predicting user input and Displaying it
 prediction = clf.predict(user_input)
 st.subheader('Prediction: ')
 st.text('Based on User Input')
 if int(prediction) == 1:
-    pred = f'There is {accuracy} chance that you have Diabetes!'
+    pred = f'There is {accuracy_2f} chance that you have Diabetes!'
     st.write(pred)
 else:
-    pred = f'There is {accuracy} chance that you are Healthy, Awesome!'
+    pred = f'There is {accuracy_2f} chance that you are Healthy, Awesome!'
     st.write(pred)
 st.subheader('Classification: ')
 st.write(prediction)
