@@ -6,6 +6,8 @@ from sklearn.svm import SVC
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
+from sklearn.decomposition import PCA as K
+from sklearn.preprocessing import scale
 
 
 df = pd.read_csv('diabetes.csv')
@@ -151,3 +153,18 @@ hide_streamlit_style = """
             </style>
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
+
+scaled_dataX = scale(X)
+
+data_reduction = K(2)  # data reduced to 2 dimension
+X_projected = data_reduction.fit_transform(scaled_dataX)
+
+x1 = X_projected[:, 0]
+x2 = X_projected[:, 1]
+
+fig = plt.figure()
+plt.scatter(x1, x2, alpha=0.8, cmap="veradis")
+plt.colorbar()
+
+st.pyplot()
+
