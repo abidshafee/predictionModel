@@ -164,7 +164,9 @@ x2 = X_projected[:, 1]
 
 fig = plt.figure()
 plt.scatter(x1, x2, alpha=0.8, cmap="veradis")
+# plt.title('Input Data reducing dimension using PCA')
+plt.xlabel('Principle_Comp col_0')
+plt.ylabel('Principle_Comp col_1')
 plt.colorbar()
-
 st.pyplot()
 
