@@ -3,6 +3,7 @@ import streamlit as st
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
+from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
@@ -19,7 +20,7 @@ st.subheader('This Machine Learning WebApp can predict Diabetes based on input v
 st.text('Dataset: ')
 
 
-classification = st.sidebar.selectbox("Select Classifier: ", ("Random Forest", "SVM", "KNN"))
+classification = st.sidebar.selectbox("Select Classifier: ", ("Random Forest", "SVM", "NB", "KNN"))
 
 
 # st.dataframe(df)
@@ -49,11 +50,13 @@ st.sidebar.subheader('Classifier Parameters')
 def model_param(cls_name):
     param = dict()
     if cls_name == 'KNN':
-        k = st.sidebar.slider('K: ', 1, 15)
+        k = st.sidebar.slider('K: ', 1, 15, 2)
         param['K'] = k
     elif cls_name == 'SVM':
         c = st.sidebar.slider('C: ', 0.1, 10.0, 1.66)
         param['C'] = c
+    elif cls_name == 'NB':
+        param = st.sidebar.subheader('priors: \nprior probabilities- \nof the classes adjusted automatically')
     else:
         max_depth = st.sidebar.slider('max_depth: ', 2, 15, 4)
         n_estimators = st.sidebar.slider('n_estimator: ', 1, 100, 29)
@@ -110,6 +113,8 @@ def get_classifier(clf_name, params):
         clf = KNeighborsClassifier(n_estimators=params['K'])
     elif clf_name == 'SVM':
         clf = SVC(C=params['C'])
+    elif clf_name == 'NB':
+        clf = GaussianNB()
     else:
         clf = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
     return clf
@@ -156,6 +161,7 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 scaled_dataX = scale(X)
 
+
 data_reduction = K(2)  # data reduced to 2 dimension
 X_projected = data_reduction.fit_transform(scaled_dataX)
 
@@ -163,10 +169,9 @@ x1 = X_projected[:, 0]
 x2 = X_projected[:, 1]
 
 fig = plt.figure()
-plt.scatter(x1, x2, alpha=0.8, cmap="veradis")
+plt.scatter(x1, x2, c=None, alpha=0.8, cmap="veradis")
 # plt.title('Input Data reducing dimension using PCA')
 plt.xlabel('Principle_Comp col_0')
 plt.ylabel('Principle_Comp col_1')
 plt.colorbar()
 st.pyplot()
-
