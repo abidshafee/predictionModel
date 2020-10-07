@@ -10,7 +10,6 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA as K
 from sklearn.preprocessing import scale
 
-
 df = pd.read_csv('diabetes.csv')
 # print(df['Outcome'].values)
 # print(df.describe(include='all'))
@@ -19,9 +18,7 @@ st.header('Prediction Model ML-WebApp')
 st.subheader('This Machine Learning WebApp can predict Diabetes based on input values')
 st.text('Dataset: ')
 
-
 classification = st.sidebar.selectbox("Select Classifier: ", ("Random Forest", "SVM", "NB", "KNN"))
-
 
 # st.dataframe(df)
 st.dataframe(df.style.highlight_max(axis=0))
@@ -29,7 +26,6 @@ st.write("Shape of Dataset: ", df.shape)
 st.subheader('Dataset Statistics: ')
 st.write(df.describe(include='all'))
 chart = st.bar_chart(df)
-
 
 # Now splitting data into text set and train set
 # defining independent dataset
@@ -101,7 +97,6 @@ def get_user_input():
 # storing user_input into a variable
 user_input = get_user_input()
 
-
 # displaying user_input in webapp
 st.subheader('User Input: ')
 st.write(user_input)
@@ -123,7 +118,6 @@ def get_classifier(clf_name, params):
 
 clf = get_classifier(classification, params)
 
-
 # ML Model
 # Prediction_Model = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
 
@@ -133,8 +127,8 @@ clf.fit(X_train, Y_train)
 # Prediction
 prediction = clf.predict(X_test)
 st.subheader('Test Accuracy: ')
-accuracy = accuracy_score(Y_test, prediction)*100
-accuracy_2f = str(round(accuracy, 2))+'%'
+accuracy = accuracy_score(Y_test, prediction) * 100
+accuracy_2f = str(round(accuracy, 2)) + '%'
 st.write(f"{classification}: " + accuracy_2f + ' (Tune random_state for better accuracy)')
 
 # now predicting user input and Displaying it
@@ -162,7 +156,6 @@ st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
 scaled_dataX = scale(X)
 
-
 data_reduction = K(2)  # data reduced to 2 dimension
 X_projected = data_reduction.fit_transform(scaled_dataX)
 
@@ -170,12 +163,10 @@ x1 = X_projected[:, 0]
 x2 = X_projected[:, 1]
 
 fig = plt.figure()
-plt.scatter(x1, x2, c=None, alpha=0.8, cmap="veradis")
-
+plt.scatter(x1, x2, c=df.iloc[:, -1])  # alpha=0.8, cmap="veradis"
 
 # plt.title('Input Data reducing dimension using PCA')
 plt.xlabel('Principle_Comp col_0')
 plt.ylabel('Principle_Comp col_1')
 plt.colorbar()
 st.pyplot()
-
