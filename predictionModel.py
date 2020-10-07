@@ -7,7 +7,7 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA as K
+from sklearn.decomposition import PCA
 from sklearn.preprocessing import scale
 
 df = pd.read_csv('diabetes.csv')
@@ -129,7 +129,7 @@ prediction = clf.predict(X_test)
 st.subheader('Test Accuracy: ')
 accuracy = accuracy_score(Y_test, prediction) * 100
 accuracy_2f = str(round(accuracy, 2)) + '%'
-st.write(f"{classification}: " + accuracy_2f + ' (Tune random_state for better accuracy)')
+st.write(f"{classification}: " + accuracy_2f + '(Tune Cross-Validation for Better Accuracy)')
 
 # now predicting user input and Displaying it
 prediction = clf.predict(user_input)
@@ -154,9 +154,12 @@ hide_streamlit_style = """
             """
 st.markdown(hide_streamlit_style, unsafe_allow_html=True)
 
+st.subheader('PCA 2D-Plot:')
+st.text('Reduced the features of input data down to two using the PCA technique.\n '
+        'Column "Pregnancies" to column: "Age" total 8 features reduced to 2')
 scaled_dataX = scale(X)
 
-data_reduction = K(2)  # data reduced to 2 dimension
+data_reduction = PCA(2)  # data reduced to 2 dimension
 X_projected = data_reduction.fit_transform(scaled_dataX)
 
 x1 = X_projected[:, 0]
