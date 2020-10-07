@@ -40,8 +40,9 @@ Y = df.iloc[:, -1].values  # all rows of very last column
 # Splitting Dataset
 # st.sidebar.text('Random State')
 st.sidebar.subheader('Cross Validation')
-random_state = st.sidebar.slider('Random State: ', 3, 30, 9)
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=0.7, random_state=random_state)
+random_state = st.sidebar.slider('Random State: ', 3, 30, 7)
+test_size = st.sidebar.slider('K Fold Cross Validation', 0.1, 0.7, 0.2)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
 
 st.sidebar.subheader('Classifier Parameters')
 
@@ -170,8 +171,11 @@ x2 = X_projected[:, 1]
 
 fig = plt.figure()
 plt.scatter(x1, x2, c=None, alpha=0.8, cmap="veradis")
+
+
 # plt.title('Input Data reducing dimension using PCA')
 plt.xlabel('Principle_Comp col_0')
 plt.ylabel('Principle_Comp col_1')
 plt.colorbar()
 st.pyplot()
+
