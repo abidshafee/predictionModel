@@ -47,7 +47,7 @@ st.sidebar.subheader('Classifier Parameters')
 def model_param(cls_name):
     param = dict()
     if cls_name == 'KNN':
-        k = st.sidebar.slider('K: ', 1, 15, 2)
+        k = st.sidebar.slider('K/n_neighbors: ', 1, 15, 2)
         param['K'] = k
     elif cls_name == 'SVM':
         c = st.sidebar.slider('C: ', 0.1, 10.0, 1.66)
@@ -106,7 +106,7 @@ st.write(user_input)
 # get classifier function
 def get_classifier(clf_name, params):
     if clf_name == 'KNN':
-        clf = KNeighborsClassifier(n_estimators=params['K'])
+        clf = KNeighborsClassifier(n_neighbors=params['K'])
     elif clf_name == 'SVM':
         clf = SVC(C=params['C'])
     elif clf_name == 'NB':
@@ -118,11 +118,14 @@ def get_classifier(clf_name, params):
 
 clf = get_classifier(classification, params)
 
+
 # ML Model
 # Prediction_Model = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
 
+
 # Training Model
 clf.fit(X_train, Y_train)
+
 
 # Prediction
 prediction = clf.predict(X_test)
@@ -130,6 +133,7 @@ st.subheader('Test Accuracy: ')
 accuracy = accuracy_score(Y_test, prediction) * 100
 accuracy_2f = str(round(accuracy, 2)) + '%'
 st.write(f"{classification}: " + accuracy_2f + '(Tune Cross-Validation for Better Accuracy)')
+
 
 # now predicting user input and Displaying it
 prediction = clf.predict(user_input)
@@ -144,6 +148,7 @@ else:
 st.subheader('Classification: ')
 st.write(prediction)
 st.sidebar.subheader('Developed by \nShafekul Abid')
+
 
 # hide menu and footer
 hide_streamlit_style = """
@@ -168,8 +173,10 @@ x2 = X_projected[:, 1]
 fig = plt.figure()
 plt.scatter(x1, x2, c=df.iloc[:, -1])  # alpha=0.8, cmap="veradis"
 
+
 # plt.title('Input Data reducing dimension using PCA')
 plt.xlabel('Principle_Comp col_0')
 plt.ylabel('Principle_Comp col_1')
 plt.colorbar()
 st.pyplot()
+# print(Y_test)
