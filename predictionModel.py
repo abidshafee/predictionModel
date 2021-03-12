@@ -1,4 +1,5 @@
 import pandas as pd
+import numpy as np
 import streamlit as st
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
@@ -170,13 +171,21 @@ X_projected = data_reduction.fit_transform(scaled_dataX)
 x1 = X_projected[:, 0]
 x2 = X_projected[:, 1]
 
+diagnosis = ['Positive', 'Negative']
+# we let this categorical names, bcoz dataset doesn't provide any!
+# Converting the python list: Dependent_count to numpy array
+diagnosis = np.array(diagnosis)
+unique_y = np.unique(Y)
+
 fig = plt.figure()
-plt.scatter(x1, x2, c=df.iloc[:, -1])  # alpha=0.8, cmap="veradis"
 
-
+colors = ['#ffca28', '#dd2c00']
+for color, i, diagn in zip(colors, unique_y, diagnosis):
+    plt.scatter(X_projected[Y == i, 0], X_projected[Y == i, 1], alpha=1, lw=3,
+                label=diagn, color=color)
+plt.legend(loc='best', shadow=False, scatterpoints=1, title='Outcome')
 # plt.title('Input Data reducing dimension using PCA')
 plt.xlabel('Principle_Comp col_0')
 plt.ylabel('Principle_Comp col_1')
-plt.colorbar()
 st.pyplot()
-# print(Y_test)
+#print(unique_y)
