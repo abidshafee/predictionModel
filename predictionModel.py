@@ -29,9 +29,9 @@ st.write(df.describe(include='all'))
 chart = st.bar_chart(df)
 
 # Now splitting data into text set and train set
-# defining independent dataset
+# defining independent variable
 X = df.iloc[:, 0:8].values  # all rows of 0 to 8-1 = 7 columns
-# dependent dataset
+# dependent variable
 Y = df.iloc[:, -1].values  # all rows of very last column
 
 # Splitting Dataset
