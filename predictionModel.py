@@ -1,6 +1,8 @@
 import pandas as pd
 import numpy as np
 import streamlit as st
+#import io
+import tensorflow as tf
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
@@ -9,7 +11,12 @@ from sklearn.metrics import accuracy_score
 from sklearn.model_selection import train_test_split
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from sklearn.preprocessing import scale
+from sklearn.preprocessing import StandardScaler, scale
+
+
+file_upload = st.file_uploader("Upload a Dataset in CSV format [Not Implemented Yet!]", type="csv")
+#text_io = io.TextIOWrapper(file_upload)
+st.set_option('deprecation.showfileUploaderEncoding', False)
 
 df = pd.read_csv('diabetes.csv')
 # print(df['Outcome'].values)
@@ -19,7 +26,7 @@ st.header('Prediction Model ML-WebApp')
 st.subheader('This Machine Learning WebApp can predict Diabetes based on input values')
 st.text('Dataset: ')
 
-classification = st.sidebar.selectbox("Select Classifier: ", ("Random Forest", "SVM", "NB", "KNN"))
+classification = st.sidebar.selectbox("Select Classifier: ", ("Random Forest", "SVM", "NB", "DNN", "KNN"))
 
 # st.dataframe(df)
 st.dataframe(df.style.highlight_max(axis=0))
@@ -37,13 +44,21 @@ Y = df.iloc[:, -1].values  # all rows of very last column
 # Splitting Dataset
 # st.sidebar.text('Random State')
 st.sidebar.subheader('Cross Validation')
+# if classification != 'DNN':
+#     random_state = st.sidebar.slider('Random State: ', 3, 30, 7)
+#     test_size = st.sidebar.slider('K Fold Cross Validation', 0.1, 0.7, 0.2)
+#     X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
+# else:
+#     st.sidebar.subheader('Loaded From Saved Model!!!')
+#     X_train, X_test, Y_train, Y_test = train_test_split(X, Y)
+
 random_state = st.sidebar.slider('Random State: ', 3, 30, 7)
 test_size = st.sidebar.slider('K Fold Cross Validation', 0.1, 0.7, 0.2)
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
+# X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
+
 
 st.sidebar.subheader('Classifier Parameters')
-
-
 # parameter function
 def model_param(cls_name):
     param = dict()
@@ -54,7 +69,9 @@ def model_param(cls_name):
         c = st.sidebar.slider('C: ', 0.1, 10.0, 1.66)
         param['C'] = c
     elif cls_name == 'NB':
-        param = st.sidebar.subheader('priors: \nprior probabilities- \nof the classes adjusted automatically')
+        param = st.sidebar.subheader('DNN Model: \nLoaded From Saved Model')
+    elif cls_name == 'DNN':
+        param = st.sidebar.subheader('Loaded From Saved Model!!!')
     else:
         max_depth = st.sidebar.slider('max_depth: ', 2, 15, 4)
         n_estimators = st.sidebar.slider('n_estimator: ', 1, 100, 29)
@@ -112,6 +129,8 @@ def get_classifier(clf_name, params):
         clf = SVC(C=params['C'])
     elif clf_name == 'NB':
         clf = GaussianNB()
+    elif clf_name == 'DNN':
+        clf = tf.keras.models.load_model("diabetes_dnnmodel.h5")
     else:
         clf = RandomForestClassifier(max_depth=params['max_depth'], n_estimators=params['n_estimators'])
     return clf
@@ -125,11 +144,21 @@ clf = get_classifier(classification, params)
 
 
 # Training Model
-clf.fit(X_train, Y_train)
+if classification != 'DNN':
+    clf.fit(X_train, Y_train)
+    prediction = clf.predict(X_test)
+else:
+    scalar = StandardScaler()
+    X_test_scale = scalar.fit_transform(X_test)
+    prediction = clf.predict(X_test_scale)
+    prediction = prediction.astype(int)
 
+
+# DNN Model
+#dnnmodel = tf.keras.models.load_model("diabetes_dnnmodel.h5")
 
 # Prediction
-prediction = clf.predict(X_test)
+# prediction = clf.predict(X_test)
 st.subheader('Test Accuracy: ')
 accuracy = accuracy_score(Y_test, prediction) * 100
 accuracy_2f = str(round(accuracy, 2)) + '%'
@@ -137,7 +166,14 @@ st.write(f"{classification}: " + accuracy_2f + '(Tune Cross-Validation for Bette
 
 
 # now predicting user input and Displaying it
-prediction = clf.predict(user_input)
+if classification != 'DNN':
+    prediction = clf.predict(user_input)
+else:
+    scalar = StandardScaler()
+    input_scale = scalar.fit_transform(user_input)
+    prediction = int(clf.predict(input_scale))
+
+#prediction = clf.predict(user_input)
 st.subheader('Prediction: ')
 st.text('Based on User Input')
 if int(prediction) == 1:

@@ -1,4 +1,5 @@
 streamlit
+tensorflow
 sklearn
 pandas <1.1
 numpy
