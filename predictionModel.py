@@ -13,18 +13,19 @@ import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler, scale
 
+st.header('Prediction Model ML-WebApp')
 
 file_upload = st.file_uploader("Upload a Dataset in CSV format [Not Implemented Yet!]", type="csv")
 #text_io = io.TextIOWrapper(file_upload)
 st.set_option('deprecation.showfileUploaderEncoding', False)
 
+st.subheader('This Machine Learning WebApp can predict Diabetes based on input values')
+st.text('Dataset: ')
+
 df = pd.read_csv('diabetes.csv')
 # print(df['Outcome'].values)
 # print(df.describe(include='all'))
 # print(df.info())
-st.header('Prediction Model ML-WebApp')
-st.subheader('This Machine Learning WebApp can predict Diabetes based on input values')
-st.text('Dataset: ')
 
 classification = st.sidebar.selectbox("Select Classifier: ", ("Random Forest", "SVM", "NB", "DNN", "KNN"))
 
@@ -43,7 +44,6 @@ Y = df.iloc[:, -1].values  # all rows of very last column
 
 # Splitting Dataset
 # st.sidebar.text('Random State')
-st.sidebar.subheader('Cross Validation')
 # if classification != 'DNN':
 #     random_state = st.sidebar.slider('Random State: ', 3, 30, 7)
 #     test_size = st.sidebar.slider('K Fold Cross Validation', 0.1, 0.7, 0.2)
@@ -52,9 +52,8 @@ st.sidebar.subheader('Cross Validation')
 #     st.sidebar.subheader('Loaded From Saved Model!!!')
 #     X_train, X_test, Y_train, Y_test = train_test_split(X, Y)
 
-random_state = st.sidebar.slider('Random State: ', 3, 30, 7)
-test_size = st.sidebar.slider('K Fold Cross Validation', 0.1, 0.7, 0.2)
-X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
+# random_state = st.sidebar.slider('Random State: ', 3, 30, 7)
+# test_size = st.sidebar.slider('K Fold Cross Validation', 0.1, 0.7, 0.2)
 # X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
 
 
@@ -82,6 +81,10 @@ def model_param(cls_name):
 
 params = model_param(classification)
 
+st.sidebar.subheader('Cross Validation')
+random_state = st.sidebar.slider('Random State: ', 3, 30, 7)
+test_size = st.sidebar.slider('K Fold Cross Validation', 0.1, 0.7, 0.2)
+X_train, X_test, Y_train, Y_test = train_test_split(X, Y, test_size=test_size, random_state=random_state)
 
 # get user input for future prediction
 def get_user_input():
