@@ -3,15 +3,15 @@ import numpy as np
 import streamlit as st
 #import io
 import tensorflow as tf
-from sklearn.ensemble import RandomForestClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.naive_bayes import GaussianNB
-from sklearn.metrics import accuracy_score
-from sklearn.model_selection import train_test_split
+from scikit-learn.ensemble import RandomForestClassifier
+from scikit-learn.neighbors import KNeighborsClassifier
+from scikit-learn.svm import SVC
+from scikit-learn.naive_bayes import GaussianNB
+from scikit-learn.metrics import accuracy_score
+from scikit-learn.model_selection import train_test_split
 import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler, scale
+from scikit-learn.decomposition import PCA
+from scikit-learn.preprocessing import StandardScaler, scale
 
 st.header('Prediction Model ML-WebApp')
 
