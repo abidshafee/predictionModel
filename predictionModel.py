@@ -17,7 +17,6 @@ st.header('Prediction Model ML-WebApp')
 
 file_upload = st.file_uploader("Upload a Dataset in CSV format [Not Implemented Yet!]", type="csv")
 #text_io = io.TextIOWrapper(file_upload)
-st.set_option('deprecation.showfileUploaderEncoding', False)
 
 st.subheader('This Machine Learning WebApp can predict Diabetes based on input values')
 st.text('Dataset: ')
@@ -170,16 +169,16 @@ st.write(f"{classification}: " + accuracy_2f + '(Tune Cross-Validation for Bette
 
 # now predicting user input and Displaying it
 if classification != 'DNN':
-    prediction = clf.predict(user_input)
+    prediction = clf.predict(user_input)[0]
 else:
     scalar = StandardScaler()
     input_scale = scalar.fit_transform(user_input)
-    prediction = int(clf.predict(input_scale))
+    prediction = int(clf.predict(input_scale)[0])
 
 #prediction = clf.predict(user_input)
 st.subheader('Prediction: ')
 st.text('Based on User Input')
-if int(prediction) == 1:
+if prediction == 1:
     pred = f'There is {accuracy_2f} chance that you have Diabetes!'
     st.write(pred)
 else:
@@ -226,5 +225,5 @@ plt.legend(loc='best', shadow=False, scatterpoints=1, title='Outcome')
 # plt.title('Input Data reducing dimension using PCA')
 plt.xlabel('Principle_Comp col_0')
 plt.ylabel('Principle_Comp col_1')
-st.pyplot()
+st.pyplot(fig)
 #print(unique_y)
