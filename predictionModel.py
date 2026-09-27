@@ -579,12 +579,10 @@ except Exception as e:
     st.stop()
 st.sidebar.markdown("---")
 st.sidebar.markdown("### 👨‍💻 Developed by")
-st.sidebar.markdown("**Shafekul Abid**")
+st.sidebar.markdown("**Md. Shafekul Abid Chowdhury**")
+st.sidebar.markdown("[🌐 Portfolio](https://abidshafee.github.io/)")
 st.sidebar.markdown("---")
-st.sidebar.markdown("### 📱 Contact")
-st.sidebar.markdown("📧 shafekul.abid@example.com")
-st.sidebar.markdown("---")
-st.sidebar.markdown("### 📤 Export Options")
+st.sidebar.markdown("###  Export Options")
 
 # Export functionality
 if st.session_state.prediction_history:
