@@ -1,0 +1,4 @@
+[browser]
+gatherUsageStats = false
+serverPort = 8501
+serverHeadless = true
