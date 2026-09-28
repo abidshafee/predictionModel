@@ -4,7 +4,7 @@ import streamlit as st
 import io
 import os
 import pickle
-import tensorflow as tf
+# import tensorflow as tf
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
